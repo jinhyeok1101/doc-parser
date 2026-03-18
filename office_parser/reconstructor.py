@@ -1,12 +1,22 @@
-"""Compact JSON → Gemini 기반 Markdown/HTML 재구성 모듈."""
+"""Compact JSON → LLM 기반 Markdown/HTML 재구성 모듈.
+
+Gemini 또는 OpenRouter(Qwen 등) 지원.
+"""
 import json
 import logging
 import os
 import re
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import yaml
+
+from .llm_client import call_llm_text
+
+# ── Rate limit 설정 ──
+MAX_RETRIES = 5
+RETRY_DELAY = 20  # 초
 
 logger = logging.getLogger("office_parser")
 
@@ -20,21 +30,6 @@ def _load_prompts() -> dict:
         with open(_PROMPTS_PATH, "r", encoding="utf-8") as f:
             _prompts_cache = yaml.safe_load(f)
     return _prompts_cache
-
-
-def _get_gemini_client(model_id: str):
-    from google import genai
-    return genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
-
-
-def _call_gemini(client, model_id: str, system: str, user: str) -> str:
-    """Gemini API 호출. system instruction + user prompt."""
-    response = client.models.generate_content(
-        model=model_id,
-        contents=user,
-        config={"system_instruction": system},
-    )
-    return response.text
 
 
 def _extract_images_from_json(sheet_json: dict) -> tuple:
@@ -102,20 +97,22 @@ def reconstruct_sheet(
     sheet_json: dict,
     output_format: str,
     model_id: str = "gemini-2.5-flash",
+    provider: str = "gemini",
 ) -> str:
-    """단일 시트 JSON을 Gemini로 재구성.
+    """단일 시트 JSON을 LLM으로 재구성.
 
-    이미지/차트는 Gemini에 보내지 않고, 후처리로 삽입.
+    이미지/차트는 LLM에 보내지 않고, 후처리로 삽입.
 
     Args:
         sheet_json: _sheet_to_compact() 결과 dict
         output_format: "md" 또는 "html"
-        model_id: Gemini 모델 ID
+        model_id: 모델 ID (예: "gemini-2.5-flash", "qwen/qwen3-32b")
+        provider: "gemini" 또는 "openrouter"
 
     Returns:
         재구성된 Markdown 또는 HTML 문자열
     """
-    # 이미지/차트 분리 → Gemini는 테이블/텍스트 재구성에만 집중
+    # 이미지/차트 분리 → LLM은 테이블/텍스트 재구성에만 집중
     cleaned_json, images = _extract_images_from_json(sheet_json)
 
     prompts = _load_prompts()
@@ -131,8 +128,18 @@ def reconstruct_sheet(
         json_content=json_content,
     )
 
-    client = _get_gemini_client(model_id)
-    result = _call_gemini(client, model_id, system, user)
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            result = call_llm_text(model_id, system, user, provider=provider)
+            break
+        except Exception as e:
+            err_str = str(e)
+            if "429" in err_str and attempt < MAX_RETRIES:
+                wait = RETRY_DELAY * attempt
+                logger.warning("⏳ Rate limited on '%s', retry %d/%d in %ds...", sheet_name, attempt, MAX_RETRIES, wait)
+                time.sleep(wait)
+            else:
+                raise
 
     if not result:
         return ""
@@ -158,13 +165,15 @@ def reconstruct_all_sheets(
     ast,
     output_format: str,
     model_id: str = "gemini-2.5-flash",
+    provider: str = "gemini",
 ) -> str:
     """AST의 모든 시트를 병렬로 재구성하여 하나의 문서로 합침.
 
     Args:
         ast: OfficeParserAST 인스턴스
         output_format: "md" 또는 "html"
-        model_id: Gemini 모델 ID
+        model_id: 모델 ID
+        provider: "gemini" 또는 "openrouter"
 
     Returns:
         전체 재구성된 문서 문자열
@@ -179,14 +188,16 @@ def reconstruct_all_sheets(
     if not sheet_jsons:
         return ""
 
-    # 병렬 재구성
-    logger.info("🔄 Reconstructing %d sheets (%s, parallel)...", len(sheet_jsons), output_format)
+    # 병렬 재구성 (OpenRouter 무료 모델은 RPM 제한이 있으므로 동시 요청 수 조절)
+    max_workers = 1 if provider == "openrouter" else None
+    logger.info("🔄 Reconstructing %d sheets (%s, %s, workers=%s)...",
+                len(sheet_jsons), output_format, provider, max_workers or "auto")
     results = {}
 
-    with ThreadPoolExecutor() as executor:
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {}
         for i, sj in enumerate(sheet_jsons):
-            f = executor.submit(reconstruct_sheet, sj, output_format, model_id)
+            f = executor.submit(reconstruct_sheet, sj, output_format, model_id, provider)
             futures[f] = (i, sj.get("sheet_name", f"Sheet_{i}"))
 
         for f in as_completed(futures):

@@ -897,15 +897,12 @@ def _extract_sheet_text(sheet_node: OfficeContentNode) -> str:
     return "\n".join(texts)
 
 
-_gemini_client_cache = {}
+from .llm_client import call_llm_vision, call_llm_simple
 
-def _get_gemini_client(config: OfficeParserConfig):
-    import os
-    from google import genai
-    model_id = config.gemini_model_id
-    if model_id not in _gemini_client_cache:
-        _gemini_client_cache[model_id] = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
-    return _gemini_client_cache[model_id]
+
+def _resolve_vision_model(config: OfficeParserConfig) -> str:
+    """비전 모델 ID 결정. vision_model_id 설정이 없으면 gemini_model_id 사용."""
+    return config.vision_model_id or config.gemini_model_id
 
 
 def _is_large_image(img_data: bytes, min_size: int) -> bool:
@@ -919,39 +916,33 @@ def _is_large_image(img_data: bytes, min_size: int) -> bool:
 
 
 def _summarize_image(img_data: bytes, fmt: str, config: OfficeParserConfig, sheet_summary: str = "") -> str:
-    from google import genai
-    client = _get_gemini_client(config)
     mime_type = f"image/{fmt}" if fmt != "jpg" else "image/jpeg"
 
     prompt = "Describe this image in detail in 3-5 sentences. Write in Korean."
     if sheet_summary:
         prompt = f"Context of the sheet containing this image: {sheet_summary}\n\nUsing the above context, describe this image in detail in 3-5 sentences. Write in Korean."
 
-    response = client.models.generate_content(
-        model=config.gemini_model_id,
-        contents=[
-            genai.types.Part.from_bytes(data=img_data, mime_type=mime_type),
-            prompt,
-        ],
+    return call_llm_vision(
+        model_id=_resolve_vision_model(config),
+        prompt=prompt,
+        image_data=img_data,
+        mime_type=mime_type,
+        provider=config.llm_provider,
     )
-    return response.text
 
 
 def _summarize_slide_image(img_data: bytes, slide_text: str, config: OfficeParserConfig) -> str:
     """슬라이드 전체 이미지 + 텍스트 컨텍스트로 요약"""
-    from google import genai
-    client = _get_gemini_client(config)
     prompt = "Summarize this presentation slide in 5-8 sentences. Cover the key points, and if there are diagrams, charts, or architecture figures, explain their meaning and relationships. Write in Korean."
     if slide_text:
         prompt += f"\n\nSlide text:\n{slide_text[:3000]}"
-    response = client.models.generate_content(
-        model=config.gemini_model_id,
-        contents=[
-            genai.types.Part.from_bytes(data=img_data, mime_type="image/png"),
-            prompt,
-        ],
+    return call_llm_vision(
+        model_id=_resolve_vision_model(config),
+        prompt=prompt,
+        image_data=img_data,
+        mime_type="image/png",
+        provider=config.llm_provider,
     )
-    return response.text
 
 
 
@@ -959,7 +950,8 @@ _DECK_SUMMARY_CHUNK_SIZE = 30000
 
 def _summarize_document(full_text: str, config: OfficeParserConfig, doc_type: str = "document") -> str:
     """전체 문서 텍스트를 청킹하여 요약 후 최종 요약 생성"""
-    client = _get_gemini_client(config)
+    model_id = config.gemini_model_id
+    provider = config.llm_provider
 
     if len(full_text) <= _DECK_SUMMARY_CHUNK_SIZE:
         chunks = [full_text]
@@ -971,11 +963,7 @@ def _summarize_document(full_text: str, config: OfficeParserConfig, doc_type: st
     for i, chunk in enumerate(chunks):
         prompt = (f"Below is part {i+1}/{len(chunks)} of a {doc_type}.\n"
                   f"Summarize the key points in 5-8 sentences. Write in Korean.\n\n{chunk}")
-        response = client.models.generate_content(
-            model=config.gemini_model_id,
-            contents=prompt,
-        )
-        summaries.append(response.text)
+        summaries.append(call_llm_simple(model_id, prompt, provider=provider))
 
     if len(summaries) == 1:
         return summaries[0]
@@ -983,33 +971,23 @@ def _summarize_document(full_text: str, config: OfficeParserConfig, doc_type: st
     combined = "\n\n".join(summaries)
     prompt = (f"Below are partial summaries of a {doc_type}.\n"
               "Create a final comprehensive summary in 5-10 sentences. Write in Korean.\n\n" + combined)
-    response = client.models.generate_content(
-        model=config.gemini_model_id,
-        contents=prompt,
-    )
-    return response.text
+    return call_llm_simple(model_id, prompt, provider=provider)
 
 def _summarize_text(text: str, sheet_name: str, config: OfficeParserConfig) -> str:
-    client = _get_gemini_client(config)
     truncated = text[:4000]
-    response = client.models.generate_content(
-        model=config.gemini_model_id,
-        contents=f"Below is the data from '{sheet_name}'. Summarize the content in 3-5 sentences. Write in Korean.\n\n{truncated}",
+    return call_llm_simple(
+        config.gemini_model_id,
+        f"Below is the data from '{sheet_name}'. Summarize the content in 3-5 sentences. Write in Korean.\n\n{truncated}",
+        provider=config.llm_provider,
     )
-    return response.text
 
 
 def _summarize_table(table_text: str, config: OfficeParserConfig, context: str = "") -> str:
-    client = _get_gemini_client(config)
     prompt = "Summarize this table in 2-4 sentences. Describe what data it contains and key insights. Write in Korean."
     if context:
         prompt = f"Context of the section containing this table:\n{context[:2000]}\n\n{prompt}"
     prompt += f"\n\nTable:\n{table_text[:4000]}"
-    response = client.models.generate_content(
-        model=config.gemini_model_id,
-        contents=prompt,
-    )
-    return response.text
+    return call_llm_simple(config.gemini_model_id, prompt, provider=config.llm_provider)
 
 
 def _parse_pdf(data: bytes, config: OfficeParserConfig) -> OfficeParserAST:

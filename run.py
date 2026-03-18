@@ -26,6 +26,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DEFAULT_MODEL_ID = os.getenv("MODEL_ID", "gemini-2.5-flash")
+DEFAULT_PROVIDER = os.getenv("LLM_PROVIDER", "gemini")
+DEFAULT_VISION_MODEL_ID = os.getenv("VISION_MODEL_ID", "")
 
 logger = logging.getLogger("doc_parser")
 
@@ -131,6 +133,8 @@ def parse_office(
     output_format: str = "markdown",
     reconstruct: bool = False,
     verbose: bool = False,
+    provider: str = "gemini",
+    vision_model_id: str = "",
 ) -> Path:
     """Parse a single Office file."""
     _setup_logging(verbose)
@@ -141,6 +145,9 @@ def parse_office(
         summarize=not no_summary,
         gemini_model_id=model_id,
         reconstruct=reconstruct,
+        reconstruct_model=model_id,
+        llm_provider=provider,
+        vision_model_id=vision_model_id,
     )
     return parse_single(str(file_path), config, output_format, str(output_dir))
 
@@ -155,6 +162,8 @@ def parse_single(
     output_format: str,
     reconstruct: bool = False,
     verbose: bool = False,
+    provider: str = "gemini",
+    vision_model_id: str = "",
 ) -> Path:
     """Dispatch to PDF / Office parser based on file extension."""
     file_path = Path(file_path)
@@ -162,7 +171,10 @@ def parse_single(
     if ext in PDF_EXTENSIONS:
         return parse_pdf(file_path, output_dir, model_id, no_summary, table_mode, verbose)
     elif ext in OFFICE_EXTENSIONS:
-        return parse_office(file_path, output_dir, model_id, no_summary, output_format, reconstruct, verbose)
+        return parse_office(
+            file_path, output_dir, model_id, no_summary, output_format,
+            reconstruct, verbose, provider, vision_model_id,
+        )
     else:
         raise ValueError(f"Unsupported file format: {ext}")
 
@@ -179,13 +191,16 @@ def main():
     parser.add_argument("--to-html", action="store_true", help="Office output format: html")
     parser.add_argument("--to-text", action="store_true", help="Office output format: text")
     parser.add_argument("--to-json", action="store_true", help="Office output format: compact JSON (RAG optimized)")
-    parser.add_argument("--reconstruct", action="store_true", help="Gemini로 JSON→clean MD/HTML 재구성")
+    parser.add_argument("--reconstruct", action="store_true", help="LLM으로 JSON→clean MD/HTML 재구성")
+    parser.add_argument("--provider", choices=["gemini", "openrouter"], default=DEFAULT_PROVIDER,
+                        help="LLM provider (default: env LLM_PROVIDER or gemini)")
+    parser.add_argument("--vision-model-id", default=DEFAULT_VISION_MODEL_ID, help="비전 모델 ID (이미지 요약용, 빈 값이면 model-id 사용)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable DEBUG logging")
     args = parser.parse_args()
 
     _setup_logging(args.verbose)
     args.output.mkdir(parents=True, exist_ok=True)
-    logger.info("🤖 Using model: %s", args.model_id)
+    logger.info("🤖 Using model: %s (provider: %s)", args.model_id, args.provider)
 
     output_format = "json" if args.to_json else "html" if args.to_html else "text" if args.to_text else "markdown"
 
@@ -194,6 +209,7 @@ def main():
         parse_single(
             args.input, args.output, args.model_id, args.no_summary,
             args.table_mode, output_format, args.reconstruct, args.verbose,
+            args.provider, args.vision_model_id,
         )
         return
 
@@ -212,7 +228,8 @@ def main():
             futs = {
                 ex.submit(
                     parse_single, f, args.output, args.model_id, args.no_summary,
-                    args.table_mode, output_format, args.verbose,
+                    args.table_mode, output_format, args.reconstruct, args.verbose,
+                    args.provider, args.vision_model_id,
                 ): f
                 for f in files
             }

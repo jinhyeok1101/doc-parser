@@ -59,14 +59,15 @@ def parse_single(
 
     out_path.write_text(output, encoding="utf-8")
 
-    # Gemini 기반 reconstruct (JSON → clean MD)
+    # LLM 기반 reconstruct (JSON → clean MD)
     if config.reconstruct:
         from office_parser.reconstructor import reconstruct_all_sheets
-        model_id = config.gemini_model_id
+        model_id = config.reconstruct_model
+        provider = config.llm_provider
 
-        logger.info("🔄 [%s] Reconstructing to MD...", name)
+        logger.info("🔄 [%s] Reconstructing to MD (provider=%s, model=%s)...", name, provider, model_id)
         try:
-            rc_md = reconstruct_all_sheets(ast, "md", model_id)
+            rc_md = reconstruct_all_sheets(ast, "md", model_id, provider)
             rc_md_path = doc_output / f"{file_path.stem}_reconstructed.md"
             rc_md_path.write_text(rc_md, encoding="utf-8")
             logger.info("✅ [%s] Reconstructed MD → %s", name, rc_md_path.name)
