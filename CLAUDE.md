@@ -33,6 +33,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 4. `docs/plans/README.md` 스프린트 인덱스에 한 줄 추가
 5. 완료 시 overview.md 상단에 `상태: 완료 (YYYY-MM-DD)` 표기
 
+### Skills
+커스텀 검증 및 유지보수 스킬은 `.claude/skills/`에 정의되어 있습니다.
+| Skill | Purpose |
+| --- | --- |
+| `verify-implementation` | 프로젝트의 모든 verify 스킬을 순차 실행하여 통합 검증 보고서를 생성합니다 |
+| `manage-skills` | 세션 변경사항을 분석하고, 검증 스킬을 생성/업데이트하며, CLAUDE.md를 관리합니다 |
+
 
 
 

@@ -1,0 +1,171 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-03-19T05:32:10.939Z",
+  "activeFeatures": [
+    ".claude",
+    "office_parser",
+    "doc-parser"
+  ],
+  "primaryFeature": ".claude",
+  "features": {
+    ".claude": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-19T00:57:00.700Z",
+        "lastUpdated": "2026-03-19T01:01:13.225Z"
+      },
+      "lastFile": "/home/jinhyeokchoe/.claude/statusline-command.sh"
+    },
+    "office_parser": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-19T04:28:39.250Z",
+        "lastUpdated": "2026-03-19T04:29:47.020Z"
+      },
+      "lastFile": "/home/jinhyeokchoe/project/U_parser/excel_poc/doc-parser/office_parser/worker.py"
+    },
+    "doc-parser": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-03-19T04:29:52.583Z",
+        "lastUpdated": "2026-03-19T05:32:10.939Z"
+      },
+      "lastFile": "/home/jinhyeokchoe/project/U_parser/excel_poc/doc-parser/run.py"
+    }
+  },
+  "pipeline": {
+    "currentPhase": 1,
+    "level": "Dynamic",
+    "phaseHistory": []
+  },
+  "session": {
+    "startedAt": "2026-03-18T00:15:57.066Z",
+    "onboardingCompleted": false,
+    "lastActivity": "2026-03-19T05:32:10.939Z"
+  },
+  "history": [
+    {
+      "timestamp": "2026-03-19T00:57:00.700Z",
+      "feature": ".claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T00:58:46.686Z",
+      "feature": ".claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T01:01:13.225Z",
+      "feature": ".claude",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:28:39.250Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:28:51.833Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:29:07.052Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:29:14.503Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:29:23.498Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:29:37.391Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:29:47.020Z",
+      "feature": "office_parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:29:52.583Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:30:03.765Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:30:10.913Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:30:17.981Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:30:23.476Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:30:31.078Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T04:30:37.013Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-03-19T05:32:10.939Z",
+      "feature": "doc-parser",
+      "phase": "do",
+      "action": "updated"
+    }
+  ]
+}

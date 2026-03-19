@@ -88,11 +88,12 @@ def parse_single(
     token_usage = {"model": model_name or "unknown", "input_tokens": 0, "output_tokens": 0}
     if config.reconstruct:
         from office_parser.reconstructor import reconstruct_all_sheets
-        model_id = config.gemini_model_id
+        model_id = config.reconstruct_model or config.gemini_model_id
+        provider = config.llm_provider
 
-        logger.info("🔄 [%s] Reconstructing to MD...", name)
+        logger.info("🔄 [%s] Reconstructing to MD (provider=%s, model=%s)...", name, provider, model_id)
         try:
-            rc_md, usage = reconstruct_all_sheets(ast, "md", model_id)
+            rc_md, usage = reconstruct_all_sheets(ast, "md", model_id, provider)
             rc_md_path = doc_output / f"{stem}_reconstructed.md"
             rc_md_path.write_text(rc_md, encoding="utf-8")
             token_usage["input_tokens"] += usage["input_tokens"]

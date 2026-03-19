@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+:root {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --text: #374151;
+  --text-secondary: #6b7280;
+  --accent: #2563eb;
+  --accent-light: #eff6ff;
+  --header-bg: #f1f5f9;
+  --header-text: #1f2937;
+  --summary-bg: #f0fdf4;
+  --summary-border: #86efac;
+  --image-summary-bg: #fefce8;
+  --image-summary-border: #fde047;
+  --table-summary-bg: #f5f3ff;
+  --table-summary-border: #c4b5fd;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 2rem;
+}
+.sheet, .slide {
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--accent);
+}
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1.5rem 0 0.75rem;
+}
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 1rem 0 0.5rem;
+}
+hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+p {
+  margin: 0.5rem 0;
+  color: var(--text);
+}
+.sheet-summary {
+  background: var(--summary-bg);
+  border-left: 4px solid var(--summary-border);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.85rem;
+}
+table th, table td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+table th {
+  background: var(--header-bg);
+  color: var(--header-text);
+  font-weight: 600;
+}
+table tr:nth-child(even) td:not([style*="background"]) {
+  background: #f8fafc;
+}
+table tr:hover td {
+  background: var(--accent-light) !important;
+  transition: background 0.15s;
+}
+table.image-meta,
+table.section-meta,
+table.page-meta,
+table.table-meta,
+table.chart-meta {
+  border: none;
+  margin: 0.75rem 0;
+  font-size: 0.85rem;
+}
+table.image-meta td,
+table.section-meta td,
+table.page-meta td,
+table.table-meta td,
+table.chart-meta td {
+  border: none;
+  padding: 0.4rem 0.75rem;
+}
+table.image-meta { background: var(--image-summary-bg); border-left: 4px solid var(--image-summary-border); border-radius: 0 8px 8px 0; }
+table.section-meta { background: var(--summary-bg); border-left: 4px solid var(--summary-border); border-radius: 0 8px 8px 0; }
+table.page-meta { background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 0 8px 8px 0; }
+table.table-meta { background: var(--table-summary-bg); border-left: 4px solid var(--table-summary-border); border-radius: 0 8px 8px 0; }
+.image {
+  margin: 1rem 0;
+  text-align: center;
+}
+.image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.image-summary {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+.chart {
+  background: #fefce8;
+  border: 1px dashed #eab308;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+}
+blockquote.notes {
+  background: #f1f5f9;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+</style>
+</head>
+<body>
+<div class="sheet" data-sheet-name="WBS공정표">
+<h1>WBS공정표</h1>
+<table>
+<tr data-row="1"><th style="font-weight: bold">범례</th><th style="background-color: #00B050; color: #000000">완료</th><th style="background-color: #FFC000; color: #000000">진행중</th><th style="background-color: #FF0000; color: #000000">지연</th><th style="background-color: #BDD7EE; color: #000000">계획</th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>
+<tr data-row="3"><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">No</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">단계</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">작업명</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">담당자</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">시작일</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">종료일</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">1월W1</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">1월W2</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">1월W3</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">1월W4</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">1월W1</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">2월W2</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">2월W3</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">2월W4</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">2월W1</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">3월W2</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">3월W3</td><td style="background-color: #2F5496; color: #FFFFFF; font-weight: bold">3월W4</td><td></td><td></td></tr>
+<tr data-row="4"><td style="font-weight: bold">1</td><td style="font-weight: bold">기획</td><td style="color: #000000">요구사항 분석</td><td style="color: #000000">김철수</td><td style="color: #000000">01/01</td><td style="color: #000000">01/14</td><td style="background-color: #00B050; color: #000000"></td><td style="background-color: #00B050; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="5"><td style="color: #000000">1.1</td><td style="color: #000000"></td><td style="color: #000000">이해관계자 인터뷰</td><td style="color: #000000">이영희</td><td style="color: #000000">01/01</td><td style="color: #000000">01/07</td><td style="background-color: #00B050; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="6"><td style="color: #000000">1.2</td><td style="color: #000000"></td><td style="color: #000000">요구사항 문서화</td><td style="color: #000000">박민수</td><td style="color: #000000">01/08</td><td style="color: #000000">01/14</td><td style="color: #000000"></td><td style="background-color: #00B050; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="7"><td style="font-weight: bold">2</td><td style="font-weight: bold">설계</td><td style="color: #000000">DB 설계</td><td style="color: #000000">김철수</td><td style="color: #000000">01/15</td><td style="color: #000000">02/04</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #00B050; color: #000000"></td><td style="background-color: #00B050; color: #000000"></td><td style="background-color: #FFC000; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="8"><td style="color: #000000">2.1</td><td style="color: #000000"></td><td style="color: #000000">ERD 작성</td><td style="color: #000000">이영희</td><td style="color: #000000">01/15</td><td style="color: #000000">01/21</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #00B050; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="9"><td style="color: #000000">2.2</td><td style="color: #000000"></td><td style="color: #000000">API 설계</td><td style="color: #000000">박민수</td><td style="color: #000000">01/22</td><td style="color: #000000">02/04</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #00B050; color: #000000"></td><td style="background-color: #FFC000; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="10"><td style="font-weight: bold">3</td><td style="font-weight: bold">개발</td><td style="color: #000000">백엔드 개발</td><td style="color: #000000">김철수</td><td style="color: #000000">02/05</td><td style="color: #000000">03/10</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #FFC000; color: #000000"></td><td style="background-color: #FFC000; color: #000000"></td><td style="background-color: #FF0000; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td></td><td></td></tr>
+<tr data-row="11"><td style="color: #000000">3.1</td><td style="color: #000000"></td><td style="color: #000000">인증 모듈</td><td style="color: #000000">이영희</td><td style="color: #000000">02/05</td><td style="color: #000000">02/18</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #FFC000; color: #000000"></td><td style="background-color: #FF0000; color: #000000"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="12"><td style="color: #000000">3.2</td><td style="color: #000000"></td><td style="color: #000000">API 구현</td><td style="color: #000000">박민수</td><td style="color: #000000">02/12</td><td style="color: #000000">03/10</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #FFC000; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="13"><td style="font-weight: bold">4</td><td style="font-weight: bold">테스트</td><td style="color: #000000">통합 테스트</td><td style="color: #000000">전체</td><td style="color: #000000">03/11</td><td style="color: #000000">03/24</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td style="background-color: #BDD7EE; color: #000000"></td><td></td><td></td></tr>
+<tr data-row="25"><td style="color: #000000">2019년도 맥주 판매 추이</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000">2019년도 맥주 판매 추이</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="26"><td style="color: #000000"></td><td style="color: #000000">평균기온</td><td style="color: #000000">매출량</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="27"><td style="color: #000000">1월</td><td style="color: #4F81BD">10</td><td style="color: #4F81BD">3455</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000">1월</td><td style="color: #000000">2월</td><td style="color: #000000">3월</td><td style="color: #000000">4월</td><td style="color: #000000">5월</td><td style="color: #000000">6월</td><td style="color: #000000">7월</td><td style="color: #000000">8월</td><td style="color: #000000">9월</td><td style="color: #000000">10월</td><td style="color: #000000">11월</td><td style="color: #000000">12월</td></tr>
+<tr data-row="28"><td style="color: #000000">2월</td><td style="color: #4F81BD">10</td><td style="color: #4F81BD">2226</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000">평균기온</td><td style="color: #000000">섭씨</td><td style="color: #4F81BD">10</td><td style="color: #4F81BD">10</td><td style="color: #4F81BD">15</td><td style="color: #4F81BD">18</td><td style="color: #4F81BD">20</td><td style="color: #4F81BD">26</td><td style="color: #4F81BD">28</td><td style="color: #4F81BD">31</td><td style="color: #4F81BD">26</td><td style="color: #4F81BD">23</td><td style="color: #4F81BD">18</td><td style="color: #4F81BD">13</td></tr>
+<tr data-row="29"><td style="color: #000000">3월</td><td style="color: #4F81BD">15</td><td style="color: #4F81BD">3199</td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000"></td><td style="color: #000000">매출량</td><td style="color: #000000">병</td><td style="color: #4F81BD">3455</td><td style="color: #4F81BD">2226</td><td style="color: #4F81BD">3199</td><td style="color: #4F81BD">3500</td><td style="color: #4F81BD">5010</td><td style="color: #4F81BD">5659</td><td style="color: #4F81BD">5857</td><td style="color: #4F81BD">6064</td><td style="color: #4F81BD">4847</td><td style="color: #4F81BD">4447</td><td style="color: #4F81BD">2729</td><td style="color: #4F81BD">2692</td></tr>
+<tr data-row="30"><td style="color: #000000">4월</td><td style="color: #4F81BD">18</td><td style="color: #4F81BD">3500</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="31"><td style="color: #000000">5월</td><td style="color: #4F81BD">20</td><td style="color: #4F81BD">5010</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="32"><td style="color: #000000">6월</td><td style="color: #4F81BD">26</td><td style="color: #4F81BD">5659</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="33"><td style="color: #000000">7월</td><td style="color: #4F81BD">28</td><td style="color: #4F81BD">5857</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="34"><td style="color: #000000">8월</td><td style="color: #4F81BD">31</td><td style="color: #4F81BD">6064</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="35"><td style="color: #000000">9월</td><td style="color: #4F81BD">26</td><td style="color: #4F81BD">4847</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="36"><td style="color: #000000">10월</td><td style="color: #4F81BD">23</td><td style="color: #4F81BD">4447</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="37"><td style="color: #000000">11월</td><td style="color: #4F81BD">18</td><td style="color: #4F81BD">2729</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="38"><td style="color: #000000">12월</td><td style="color: #4F81BD">13</td><td style="color: #4F81BD">2692</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="51"><td style="font-weight: bold">2024년 상반기 매출 현황</td><td></td><td></td><td></td><td></td><td style="color: #000000"></td><td style="font-weight: bold">손익 요약</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="53"><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">구분</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">국내</td><td></td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">해외</td><td></td><td style="color: #000000"></td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">구분</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">금액</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">전기대비</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="54"><td style="color: #000000"></td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">매출액</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">비율</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">매출액</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">비율</td><td style="color: #000000"></td><td style="color: #000000">매출</td><td style="color: #000000">5300</td><td style="color: #000000">+12%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="55"><td style="color: #000000">1분기</td><td style="color: #000000">1500</td><td style="color: #000000">45%</td><td style="color: #000000">800</td><td style="color: #000000">35%</td><td style="color: #000000"></td><td style="color: #000000">비용</td><td style="color: #000000">1920</td><td style="color: #000000">+8%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="56"><td style="color: #000000">2분기</td><td style="color: #000000">1800</td><td style="color: #000000">55%</td><td style="color: #000000">1200</td><td style="color: #000000">52%</td><td style="color: #000000"></td><td style="font-weight: bold">영업이익</td><td style="font-weight: bold">3380</td><td style="font-weight: bold">+15%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="57"><td style="background-color: #D6DCE4; font-weight: bold">합계</td><td style="background-color: #D6DCE4; font-weight: bold">3300</td><td style="background-color: #D6DCE4; font-weight: bold">100%</td><td style="background-color: #D6DCE4; font-weight: bold">2000</td><td style="background-color: #D6DCE4; font-weight: bold">100%</td><td style="color: #000000"></td><td style="font-weight: bold">순이익</td><td style="font-weight: bold">2700</td><td style="font-weight: bold">+18%</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="60"><td style="font-weight: bold">2024년 상반기 비용 현황</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="62"><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">비용항목</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">1분기</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">2분기</td><td style="background-color: #4472C4; color: #FFFFFF; font-weight: bold">합계</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="63"><td style="color: #000000">인건비</td><td style="color: #000000">500</td><td style="color: #000000">550</td><td style="color: #000000">1050</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="64"><td style="color: #000000">운영비</td><td style="color: #000000">200</td><td style="color: #000000">230</td><td style="color: #000000">430</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="65"><td style="color: #000000">마케팅비</td><td style="color: #000000">150</td><td style="color: #000000">180</td><td style="color: #000000">330</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="66"><td style="color: #000000">기타</td><td style="color: #000000">50</td><td style="color: #000000">60</td><td style="color: #000000">110</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="67"><td style="background-color: #D6DCE4; font-weight: bold">합계</td><td style="background-color: #D6DCE4; font-weight: bold">900</td><td style="background-color: #D6DCE4; font-weight: bold">1020</td><td style="background-color: #D6DCE4; font-weight: bold">1920</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="83"><td style="background-color: #E2EFDA; font-weight: bold">주요 자유 의견 요약</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="84"><td style="font-weight: bold">긍정 의견</td><td></td><td style="color: #000000"></td><td style="font-weight: bold">부정 의견</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="85"><td style="color: #000000">• 팀 분위기 좋음</td><td></td><td style="color: #000000"></td><td style="color: #000000">• 야근 빈도 높음</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="86"><td style="color: #000000">• 자율 근무 만족</td><td></td><td style="color: #000000"></td><td style="color: #000000">• 급여 인상 부족</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr data-row="87"><td style="color: #000000">• 성장 기회 다양</td><td></td><td style="color: #000000"></td><td style="color: #000000">• 소통 부재</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+</div>
+</body>
+</html>
