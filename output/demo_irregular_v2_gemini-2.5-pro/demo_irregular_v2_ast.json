@@ -1,0 +1,5155 @@
+{
+  "type": "xlsx",
+  "metadata": {
+    "title": null,
+    "author": null,
+    "last_modified_by": null,
+    "created": null,
+    "modified": null,
+    "description": null,
+    "subject": null,
+    "pages": null,
+    "formatting": null,
+    "style_map": null,
+    "document_summary": null
+  },
+  "content": [
+    {
+      "type": "sheet",
+      "text": null,
+      "children": [
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "범례",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 1,
+                "col": 1,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "완료",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 1,
+                "col": 2,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "진행중",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 1,
+                "col": 3,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "지연",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 1,
+                "col": 4,
+                "style": {
+                  "background-color": "#FF0000",
+                  "color": "#FFFFFF"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "계획",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 1,
+                "col": 5,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 1
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "No",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 1,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "단계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 2,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "작업명",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 3,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "담당자",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 4,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "시작일",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 5,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "종료일",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 6,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1월W1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 7,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1월W2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 8,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1월W3",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 9,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1월W4",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 10,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1월W1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 11,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2월W2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 12,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2월W3",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 13,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2월W4",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 14,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2월W1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 15,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3월W2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 16,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3월W3",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 17,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3월W4",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 3,
+                "col": 18,
+                "style": {
+                  "background-color": "#2F5496",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 3
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 1,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "기획",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 2,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "요구사항 분석",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "김철수",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/01",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/14",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 7,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 4,
+                "col": 8,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 4
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "1.1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "이해관계자 인터뷰",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "이영희",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/01",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/07",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 5,
+                "col": 7,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 5
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "1.2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "요구사항 문서화",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "박민수",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/08",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/14",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 6,
+                "col": 8,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 6
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 1,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "설계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 2,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "DB 설계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "김철수",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/15",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "02/04",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 9,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 10,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 7,
+                "col": 11,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 7
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2.1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "ERD 작성",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "이영희",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/15",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/21",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 8,
+                "col": 9,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 8
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2.2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "API 설계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "박민수",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "01/22",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "02/04",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 10,
+                "style": {
+                  "background-color": "#00B050",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 9,
+                "col": 11,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 9
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "3",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 1,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "개발",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 2,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "백엔드 개발",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "김철수",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "02/05",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "03/10",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 10,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 11,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 12,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 13,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 14,
+                "style": {
+                  "background-color": "#FF0000",
+                  "color": "#FFFFFF"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 15,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 16,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 17,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 10,
+                "col": 18,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 10
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "3.1",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "인증 모듈",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "이영희",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "02/05",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "02/18",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 10,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 11,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 12,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 11,
+                "col": 13,
+                "style": {
+                  "background-color": "#FF0000",
+                  "color": "#FFFFFF"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 11
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "3.2",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "API 구현",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "박민수",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "02/12",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "03/10",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 10,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 11,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 12,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 13,
+                "style": {
+                  "background-color": "#FFC000",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 14,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 15,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 12,
+                "col": 16,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 12
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "4",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 1,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "테스트",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 2,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "통합 테스트",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "전체",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "03/11",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "03/24",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 10,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 11,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 12,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 13,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 14,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 15,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 16,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 17,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 13,
+                "col": 18,
+                "style": {
+                  "background-color": "#BDD7EE",
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 13
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2019년도 맥주 판매 추이",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2019년도 맥주 판매 추이",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 25,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 25
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 26,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "평균기온",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 26,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "매출량",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 26,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 26
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "1월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "10",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3455",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 10,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 11,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "4월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 12,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 13,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "6월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 14,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "7월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 15,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "8월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 16,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "9월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 17,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "10월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 18,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "11월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 19,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "12월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 27,
+                "col": 20,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 27
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "10",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2226",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "평균기온",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "섭씨",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "10",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 9,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "10",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 10,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "15",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 11,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "18",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 12,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "20",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 13,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "26",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 14,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "28",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 15,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "31",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 16,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "26",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 17,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "23",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 18,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "18",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 19,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "13",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 28,
+                "col": 20,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 28
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "3월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "15",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3199",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "매출량",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "병",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3455",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 9,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2226",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 10,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3199",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 11,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3500",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 12,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5010",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 13,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5659",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 14,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5857",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 15,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "6064",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 16,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "4847",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 17,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "4447",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 18,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2729",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 19,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2692",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 29,
+                "col": 20,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 29
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "4월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 30,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "18",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 30,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3500",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 30,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 30
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "5월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 31,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "20",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 31,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5010",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 31,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 31
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "6월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 32,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "26",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 32,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5659",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 32,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 32
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "7월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 33,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "28",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 33,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5857",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 33,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 33
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "8월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 34,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "31",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 34,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "6064",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 34,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 34
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "9월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 35,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "26",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 35,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "4847",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 35,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 35
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "10월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 36,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "23",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 36,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "4447",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 36,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 36
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "11월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 37,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "18",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 37,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2729",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 37,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 37
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "12월",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 38,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "13",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 38,
+                "col": 2,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2692",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 38,
+                "col": 3,
+                "style": {
+                  "color": "#4F81BD"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 38
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2024년 상반기 매출 현황",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 51,
+                "col": 1,
+                "colspan": 5,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 51,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "손익 요약",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 51,
+                "col": 7,
+                "colspan": 3,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 51
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "구분",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 1,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "국내",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 2,
+                "colspan": 2,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "해외",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 4,
+                "colspan": 2,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "구분",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 7,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "금액",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 8,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "전기대비",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 53,
+                "col": 9,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 53
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "구분",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "매출액",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 2,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "비율",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 3,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "매출액",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 4,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "비율",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 5,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "매출",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "5300",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "+12%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 54,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 54
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "1분기",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1500",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "45%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "800",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "35%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "비용",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 7,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1920",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 8,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "+8%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 55,
+                "col": 9,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 55
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2분기",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1800",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "55%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1200",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "52%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 5,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "영업이익",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 7,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3380",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 8,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "+15%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 56,
+                "col": 9,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 56
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "합계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 1,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "3300",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 2,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "100%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 3,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2000",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 4,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "100%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 5,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 6,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "순이익",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 7,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2700",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 8,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "+18%",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 57,
+                "col": 9,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 57
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "2024년 상반기 비용 현황",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 60,
+                "col": 1,
+                "colspan": 4,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 60
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "비용항목",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 62,
+                "col": 1,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1분기",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 62,
+                "col": 2,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "2분기",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 62,
+                "col": 3,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "합계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 62,
+                "col": 4,
+                "style": {
+                  "background-color": "#4472C4",
+                  "color": "#FFFFFF",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 62
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "인건비",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 63,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "500",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 63,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "550",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 63,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1050",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 63,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 63
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "운영비",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 64,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "200",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 64,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "230",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 64,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "430",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 64,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 64
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "마케팅비",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 65,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "150",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 65,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "180",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 65,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "330",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 65,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 65
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "기타",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 66,
+                "col": 1,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "50",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 66,
+                "col": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "60",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 66,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "110",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 66,
+                "col": 4,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 66
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "합계",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 67,
+                "col": 1,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "900",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 67,
+                "col": 2,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1020",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 67,
+                "col": 3,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "1920",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 67,
+                "col": 4,
+                "style": {
+                  "background-color": "#D6DCE4",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 67
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "주요 자유 의견 요약",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 83,
+                "col": 1,
+                "colspan": 6,
+                "style": {
+                  "background-color": "#E2EFDA",
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 83
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "긍정 의견",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 84,
+                "col": 1,
+                "colspan": 2,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 84,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "부정 의견",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 84,
+                "col": 4,
+                "colspan": 3,
+                "style": {
+                  "font-weight": "bold"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 84
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "• 팀 분위기 좋음",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 85,
+                "col": 1,
+                "colspan": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 85,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "• 야근 빈도 높음",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 85,
+                "col": 4,
+                "colspan": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 85
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "• 자율 근무 만족",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 86,
+                "col": 1,
+                "colspan": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 86,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "• 급여 인상 부족",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 86,
+                "col": 4,
+                "colspan": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 86
+          },
+          "raw_content": null
+        },
+        {
+          "type": "row",
+          "text": null,
+          "children": [
+            {
+              "type": "cell",
+              "text": "• 성장 기회 다양",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 87,
+                "col": 1,
+                "colspan": 2,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 87,
+                "col": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            },
+            {
+              "type": "cell",
+              "text": "• 소통 부재",
+              "children": null,
+              "formatting": null,
+              "metadata": {
+                "row": 87,
+                "col": 4,
+                "colspan": 3,
+                "style": {
+                  "color": "#000000"
+                }
+              },
+              "raw_content": null
+            }
+          ],
+          "formatting": null,
+          "metadata": {
+            "row": 87
+          },
+          "raw_content": null
+        }
+      ],
+      "formatting": null,
+      "metadata": {
+        "sheetName": "WBS공정표",
+        "maxRow": 87,
+        "maxColumn": 20
+      },
+      "raw_content": null
+    }
+  ],
+  "attachments": null
+}

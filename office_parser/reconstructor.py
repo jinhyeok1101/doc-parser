@@ -27,14 +27,24 @@ def _get_gemini_client(model_id: str):
     return genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
 
-def _call_gemini(client, model_id: str, system: str, user: str) -> str:
-    """Gemini API 호출. system instruction + user prompt."""
+def _call_gemini(client, model_id: str, system: str, user: str) -> tuple:
+    """Gemini API 호출. system instruction + user prompt.
+
+    Returns:
+        (text, usage_dict) — 응답 텍스트와 토큰 사용량
+    """
     response = client.models.generate_content(
         model=model_id,
         contents=user,
         config={"system_instruction": system},
     )
-    return response.text
+    # 토큰 사용량 추출
+    usage = {"input_tokens": 0, "output_tokens": 0}
+    if hasattr(response, "usage_metadata") and response.usage_metadata:
+        um = response.usage_metadata
+        usage["input_tokens"] = getattr(um, "prompt_token_count", 0) or 0
+        usage["output_tokens"] = getattr(um, "candidates_token_count", 0) or 0
+    return response.text, usage
 
 
 def _extract_images_from_json(sheet_json: dict) -> tuple:
@@ -132,10 +142,10 @@ def reconstruct_sheet(
     )
 
     client = _get_gemini_client(model_id)
-    result = _call_gemini(client, model_id, system, user)
+    result, usage = _call_gemini(client, model_id, system, user)
 
     if not result:
-        return ""
+        return "", usage
 
     # 코드 블록 래핑 제거
     if result.startswith("```markdown"):
@@ -151,7 +161,7 @@ def reconstruct_sheet(
     if output_format == "md":
         result = _insert_images_md(result, images)
 
-    return result
+    return result, usage
 
 
 def reconstruct_all_sheets(
@@ -182,6 +192,7 @@ def reconstruct_all_sheets(
     # 병렬 재구성
     logger.info("🔄 Reconstructing %d sheets (%s, parallel)...", len(sheet_jsons), output_format)
     results = {}
+    total_usage = {"input_tokens": 0, "output_tokens": 0}
 
     with ThreadPoolExecutor() as executor:
         futures = {}
@@ -192,17 +203,24 @@ def reconstruct_all_sheets(
         for f in as_completed(futures):
             idx, name = futures[f]
             try:
-                results[idx] = f.result()
-                logger.info("✅ Reconstructed sheet '%s'", name)
+                text, usage = f.result()
+                results[idx] = text
+                total_usage["input_tokens"] += usage["input_tokens"]
+                total_usage["output_tokens"] += usage["output_tokens"]
+                logger.info("✅ Reconstructed sheet '%s' (in: %d, out: %d tokens)",
+                            name, usage["input_tokens"], usage["output_tokens"])
             except Exception as e:
                 logger.error("❌ Reconstruct failed for '%s': %s", name, e)
                 results[idx] = f"<!-- Reconstruct failed: {name} -->"
+
+    logger.info("📊 Total token usage — input: %d, output: %d",
+                total_usage["input_tokens"], total_usage["output_tokens"])
 
     # 순서대로 합치기
     ordered = [results[i] for i in sorted(results.keys())]
 
     if output_format == "md":
-        return "\n\n---\n\n".join(ordered)
+        return "\n\n---\n\n".join(ordered), total_usage
     else:
         # HTML: wrap in full document
         body = "\n<hr />\n".join(ordered)
@@ -225,4 +243,4 @@ hr {{ border: none; height: 1px; background: #e2e8f0; margin: 2rem 0; }}
 <body>
 {body}
 </body>
-</html>"""
+</html>""", total_usage

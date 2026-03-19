@@ -73,7 +73,9 @@ def parse_pdf(
     pdf_logger = logging.getLogger("pdf_parser")
     pdf_path = Path(pdf_path)
     name = pdf_path.name
-    doc_output = output_dir / pdf_path.stem
+    # output/{파일명}_{모델명}/ 구조
+    model_short = model_id.split("/")[-1].split(":")[-1]
+    doc_output = output_dir / f"{pdf_path.stem}_{model_short}"
     doc_output.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
 
@@ -142,7 +144,9 @@ def parse_office(
         gemini_model_id=model_id,
         reconstruct=reconstruct,
     )
-    return parse_single(str(file_path), config, output_format, str(output_dir))
+    # 모델명 단축: "gemini-2.5-flash" → "gemini-2.5-flash"
+    model_short = model_id.split("/")[-1].split(":")[-1]
+    return parse_single(str(file_path), config, output_format, str(output_dir), model_name=model_short)
 
 
 # ── Unified dispatcher ────────────────────────────────────────────────

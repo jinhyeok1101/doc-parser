@@ -1,0 +1,5 @@
+{
+  "model": "gemini-2.5-flash",
+  "input_tokens": 65594,
+  "output_tokens": 18169
+}
