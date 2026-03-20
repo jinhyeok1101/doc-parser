@@ -29,7 +29,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **새 스프린트 시작 절차**:
 1. `docs/plans/sprint-NN-<name>/` 폴더 생성
 2. `overview.md` 작성 — 목표, phase 요약 테이블, 의존 관계 다이어그램, 진행 규칙
-3. phase별 `phase-N-<name>.md` 작성 — 목적, 작업 목록, 위험 사항, 독립 수행이 가능하다면 Sub Agent 로 독립수행 , Phase 내 작업 단위는 하나의 커밋으로
+3. phase별 `phase-N-<name>.md` 작성 — 목적, 작업 목록, 위험 사항, 주요 코드 블록 수정 사항
 4. `docs/plans/README.md` 스프린트 인덱스에 한 줄 추가
 5. 완료 시 overview.md 상단에 `상태: 완료 (YYYY-MM-DD)` 표기
 
