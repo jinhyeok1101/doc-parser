@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"uv run python -c \\\"import openai; print(openai.__version__)\\\" 2>&1\",\"description\":\"Check if openai package is installed\"}",
-  "error": "Exit code 1\nUninstalled 1 package in 4ms\nInstalled 4 packages in 31ms\nTraceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nModuleNotFoundError: No module named 'openai'",
-  "timestamp": "2026-03-19T04:30:42.865Z",
-  "retry_count": 1
-}
