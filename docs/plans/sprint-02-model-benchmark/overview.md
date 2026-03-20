@@ -11,11 +11,21 @@ GT에 가장 근접한 모델을 선정한다.
 
 ## 후보 모델
 
-| # | 모델 | OpenRouter ID | 특징 |
-|---|------|--------------|------|
-| 1 | Qwen 3.5 Plus | `qwen/qwen3.5-plus-02-15` | 하이브리드 아키텍처, 높은 텍스트 품질 |
-| 2 | GLM-4.7 Flash | `zhipu/glm-4.7-flash` | 30B급, 에이전틱 코딩 최적화 |
-| 3 | GPT-OSS-120B | `openai/gpt-oss-120b` | 117B MoE, 무료, 131K 컨텍스트 |
+| # | 모델 | OpenRouter ID | 특징 | 상태 |
+|---|------|--------------|------|------|
+| 1 | GPT-OSS-120B | `openai/gpt-oss-120b:free` | 117B MoE, 무료, 131K 컨텍스트 | **10/10 성공** |
+| 2 | GLM-4.5 Air | `z-ai/glm-4.5-air:free` | 하이브리드 추론, 무료 | **일부 성공** (일일 한도 초과, 재시도 필요) |
+| 3 | GLM-4.6V | `z-ai/glm-4.6v` | 멀티모달, 128K 컨텍스트 | 미실행 (유료, $0.30/$0.90 per M) |
+
+### 실패한 모델
+
+| 모델 | OpenRouter ID | 실패 사유 |
+|------|--------------|----------|
+| Qwen 3.5 Plus | `qwen/qwen3.5-plus-02-15` | Privacy 설정 충돌 (ZDR + Always Enforce Allowed) |
+| Qwen3-32B | `qwen/qwen3-32b` | 크레딧 부족 (402) |
+| QwQ-32B | `qwen/qwq-32b:free` | 무료 엔드포인트 미존재 (404) |
+| Qwen2.5-72B | `qwen/qwen-2.5-72b-instruct:free` | 무료 엔드포인트 미존재 (404) |
+| Qwen3-Coder 480B | `qwen/qwen3-coder:free` | Rate limit 초과 (1~2/10 성공) |
 
 ## GT (Ground Truth)
 

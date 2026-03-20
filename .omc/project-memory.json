@@ -169,6 +169,18 @@
       "type": "file"
     },
     {
+      "path": "docs/plans/sprint-02-model-benchmark/overview.md",
+      "accessCount": 3,
+      "lastAccessed": 1773965110195,
+      "type": "file"
+    },
+    {
+      "path": "docs/plans/sprint-02-model-benchmark/phase-2-model-execution.md",
+      "accessCount": 3,
+      "lastAccessed": 1773965133818,
+      "type": "file"
+    },
+    {
       "path": ".claude/settings.local.json",
       "accessCount": 2,
       "lastAccessed": 1773893861518,
@@ -241,21 +253,9 @@
       "type": "file"
     },
     {
-      "path": "docs/plans/sprint-02-model-benchmark/overview.md",
-      "accessCount": 1,
-      "lastAccessed": 1773894339219,
-      "type": "file"
-    },
-    {
       "path": "docs/plans/sprint-02-model-benchmark/phase-1-code-integration.md",
       "accessCount": 1,
       "lastAccessed": 1773894344856,
-      "type": "file"
-    },
-    {
-      "path": "docs/plans/sprint-02-model-benchmark/phase-2-model-execution.md",
-      "accessCount": 1,
-      "lastAccessed": 1773894352027,
       "type": "file"
     },
     {
