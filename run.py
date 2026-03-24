@@ -189,7 +189,7 @@ def main():
     parser.add_argument("--to-text", action="store_true", help="Office output format: text")
     parser.add_argument("--to-json", action="store_true", help="Office output format: compact JSON (RAG optimized)")
     parser.add_argument("--reconstruct", action="store_true", help="LLM으로 JSON→clean MD/HTML 재구성")
-    parser.add_argument("--provider", choices=["gemini", "openrouter"], default=DEFAULT_PROVIDER,
+    parser.add_argument("--provider", choices=["gemini", "openrouter", "central"], default=DEFAULT_PROVIDER,
                         help="LLM provider (default: env LLM_PROVIDER or gemini)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable DEBUG logging")
     args = parser.parse_args()

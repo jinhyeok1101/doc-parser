@@ -1,9 +1,11 @@
-"""LLM Provider 추상화 — Gemini / OpenRouter 통합 클라이언트.
+"""LLM Provider 추상화 — Gemini / OpenRouter / Central LLM 통합 클라이언트.
 
 환경변수:
-    LLM_PROVIDER: "gemini" (기본) 또는 "openrouter"
+    LLM_PROVIDER: "gemini" (기본), "openrouter", "central"
     GOOGLE_API_KEY: Gemini API 키
     OPENROUTER_API_KEY: OpenRouter API 키
+    CENTRAL_LLM_API_KEY: Central LLM (LiteLLM Proxy) API 키
+    CENTRAL_LLM_BASE_URL: Central LLM Proxy 서버 주소
 """
 
 from __future__ import annotations
@@ -45,6 +47,17 @@ def _get_openrouter():
             },
         )
     return _client_cache["openrouter"]
+
+
+def _get_central():
+    """Central LLM 클라이언트 (LiteLLM Proxy, OpenAI SDK 호환)."""
+    if "central" not in _client_cache:
+        from openai import OpenAI
+        _client_cache["central"] = OpenAI(
+            api_key=os.getenv("CENTRAL_LLM_API_KEY"),
+            base_url=os.getenv("CENTRAL_LLM_BASE_URL"),
+        )
+    return _client_cache["central"]
 
 
 # ── Gemini 텍스트 호출 ──
@@ -93,6 +106,30 @@ def _call_openrouter_text(model_id: str, system: str, user: str) -> tuple[str, d
     return text, usage
 
 
+# ── Central LLM 텍스트 호출 ──
+
+def _call_central_text(model_id: str, system: str, user: str) -> tuple[str, dict]:
+    """Central LLM (LiteLLM Proxy) API 호출 (OpenAI SDK 호환).
+
+    Returns:
+        (text, usage_dict) — 응답 텍스트와 토큰 사용량
+    """
+    client = _get_central()
+    response = client.chat.completions.create(
+        model=model_id,
+        messages=[
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+    )
+    usage = {"input_tokens": 0, "output_tokens": 0}
+    if response.usage:
+        usage["input_tokens"] = response.usage.prompt_tokens or 0
+        usage["output_tokens"] = response.usage.completion_tokens or 0
+    text = response.choices[0].message.content if response.choices else ""
+    return text, usage
+
+
 # ── 통합 호출 (재시도 포함) ──
 
 def call_llm_text(
@@ -112,7 +149,15 @@ def call_llm_text(
     Returns:
         (text, usage_dict) — 응답 텍스트와 토큰 사용량
     """
-    call_fn = _call_openrouter_text if provider == "openrouter" else _call_gemini_text
+    # provider별 호출 함수 매핑
+    _provider_fns = {
+        "gemini": _call_gemini_text,
+        "openrouter": _call_openrouter_text,
+        "central": _call_central_text,
+    }
+    call_fn = _provider_fns.get(provider)
+    if call_fn is None:
+        raise ValueError(f"지원하지 않는 LLM provider: {provider!r} (가능: {list(_provider_fns.keys())})")
 
     for attempt in range(1, MAX_RETRIES + 1):
         try:
