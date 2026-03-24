@@ -1,6 +1,7 @@
 """Compact JSON → LLM 기반 Markdown/HTML 재구성 모듈.
 
-Gemini 또는 OpenRouter(Qwen, GLM 등) 지원.
+Gemini, OpenRouter(Qwen, GLM 등), Central LLM 지원.
+시트별 정형/비정형 분류 기능 포함.
 """
 import json
 import logging
@@ -25,6 +26,103 @@ def _load_prompts() -> dict:
         with open(_PROMPTS_PATH, "r", encoding="utf-8") as f:
             _prompts_cache = yaml.safe_load(f)
     return _prompts_cache
+
+
+def classify_sheet(
+    sheet_json: dict,
+    model_id: str = "gemini-2.5-flash",
+    provider: str = "gemini",
+) -> dict:
+    """시트를 pass(LLM 불필요) 또는 reconstruct(LLM 재구성 필요)로 분류.
+
+    첫 10행만 전송하여 토큰 절약.
+
+    Args:
+        sheet_json: _sheet_to_compact() 결과 dict
+        model_id: 모델 ID
+        provider: "gemini", "openrouter", "central"
+
+    Returns:
+        {"classification": "pass"|"reconstruct", "reason": "..."}
+    """
+    prompts = _load_prompts()
+    prompt = prompts["classify_sheet"]
+
+    # 첫 10행만 추출하여 토큰 절약
+    preview = dict(sheet_json)
+    preview["rows"] = sheet_json.get("rows", [])[:10]
+
+    sheet_name = preview.get("sheet_name", "Sheet")
+    json_content = json.dumps(preview, ensure_ascii=False, indent=2)
+
+    system = prompt["system"]
+    user = prompt["user"].format(
+        sheet_name=sheet_name,
+        json_content=json_content,
+    )
+
+    try:
+        result, usage = call_llm_text(model_id, system, user, provider=provider)
+        # JSON 파싱 시도
+        if result:
+            # 코드 블록 래핑 제거
+            cleaned = result.strip()
+            if cleaned.startswith("```"):
+                cleaned = re.sub(r"^```\w*\n?", "", cleaned)
+                cleaned = re.sub(r"\n?```$", "", cleaned)
+            parsed = json.loads(cleaned)
+            logger.info("🏷️ Sheet '%s' classified as: %s (%s)",
+                        sheet_name, parsed.get("classification"), parsed.get("reason"))
+            return parsed
+    except (json.JSONDecodeError, Exception) as e:
+        logger.warning("⚠️ Sheet '%s' classification failed: %s — defaulting to reconstruct", sheet_name, e)
+
+    # 실패 시 reconstruct로 기본 처리 (안전)
+    return {"classification": "reconstruct", "reason": "classification failed, defaulting to reconstruct"}
+
+
+def classify_all_sheets(
+    ast,
+    model_id: str = "gemini-2.5-flash",
+    provider: str = "gemini",
+) -> dict:
+    """AST의 모든 시트를 병렬로 정형/비정형 분류.
+
+    Returns:
+        {시트이름: {"classification": ..., "reason": ...}} 딕셔너리
+    """
+    sheet_jsons = []
+    for node in ast.content:
+        if node.type == "sheet":
+            sheet_json = ast._sheet_to_compact(node)
+            sheet_jsons.append(sheet_json)
+
+    if not sheet_jsons:
+        return {}
+
+    logger.info("🏷️ Classifying %d sheets (provider=%s)...", len(sheet_jsons), provider)
+    results = {}
+
+    with ThreadPoolExecutor(max_workers=None) as executor:
+        futures = {}
+        for sj in sheet_jsons:
+            name = sj.get("sheet_name", "Sheet")
+            f = executor.submit(classify_sheet, sj, model_id, provider)
+            futures[f] = name
+
+        for f in as_completed(futures):
+            name = futures[f]
+            try:
+                results[name] = f.result()
+            except Exception as e:
+                logger.error("❌ Classification failed for '%s': %s", name, e)
+                results[name] = {"classification": "reconstruct", "reason": f"error: {e}"}
+
+    pass_sheets = [n for n, r in results.items() if r["classification"] == "pass"]
+    recon_sheets = [n for n, r in results.items() if r["classification"] == "reconstruct"]
+    logger.info("📊 Classification result — pass: %d, reconstruct: %d",
+                len(pass_sheets), len(recon_sheets))
+    return results
 
 
 def _extract_images_from_json(sheet_json: dict) -> tuple:
@@ -251,6 +349,7 @@ def reconstruct_all_sheets(
     output_format: str,
     model_id: str = "gemini-2.5-flash",
     provider: str = "gemini",
+    skip_sheets: set | None = None,
 ) -> str:
     """AST의 모든 시트를 병렬로 재구성하여 하나의 문서로 합침.
 
@@ -258,11 +357,14 @@ def reconstruct_all_sheets(
         ast: OfficeParserAST 인스턴스
         output_format: "md" 또는 "html"
         model_id: 모델 ID
-        provider: "gemini" 또는 "openrouter"
+        provider: "gemini", "openrouter", "central"
+        skip_sheets: 정형으로 분류되어 reconstruct를 skip할 시트 이름 set
 
     Returns:
         전체 재구성된 문서 문자열
     """
+    skip_sheets = skip_sheets or set()
+
     # 시트별 compact JSON 생성
     sheet_jsons = []
     for node in ast.content:
@@ -283,8 +385,14 @@ def reconstruct_all_sheets(
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         futures = {}
         for i, sj in enumerate(sheet_jsons):
+            name = sj.get("sheet_name", f"Sheet_{i}")
+            # 정형 시트는 reconstruct skip — raw compact JSON을 간단 MD로 변환
+            if name in skip_sheets:
+                logger.info("⏭️ Skipping pass sheet '%s'", name)
+                results[i] = f"## {name}\n\n*(정형 데이터 — reconstruct 생략)*"
+                continue
             f = executor.submit(reconstruct_sheet, sj, output_format, model_id, provider)
-            futures[f] = (i, sj.get("sheet_name", f"Sheet_{i}"))
+            futures[f] = (i, name)
 
         for f in as_completed(futures):
             idx, name = futures[f]

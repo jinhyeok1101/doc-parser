@@ -84,17 +84,29 @@ def parse_single(
     compact_path.write_text(ast.to_json_compact(), encoding="utf-8")
     logger.info("🗜️ [%s] Compact JSON saved → %s", name, compact_path.name)
 
-    # ④ Gemini 재구성 MD (워크플로우 6단계 — 최종 결과)
+    # ④ 시트 분류 + Gemini 재구성 MD (워크플로우 6단계 — 최종 결과)
     token_usage = {"model": model_name or "unknown", "input_tokens": 0, "output_tokens": 0}
     if config.reconstruct:
-        from office_parser.reconstructor import reconstruct_all_sheets
+        from office_parser.reconstructor import reconstruct_all_sheets, classify_all_sheets
         model_id = config.reconstruct_model or config.gemini_model_id
         provider = config.llm_provider
 
-        # from_json 모드 (기본): Compact JSON → LLM → Markdown
+        # 시트별 정형/비정형 분류
+        classifications = classify_all_sheets(ast, model_id, provider)
+        pass_sheets = [n for n, r in classifications.items() if r["classification"] == "pass"]
+        if pass_sheets:
+            logger.info("⏭️ [%s] Skipping pass sheets: %s", name, ", ".join(pass_sheets))
+
+        # 분류 결과 저장
+        classify_path = doc_output / f"{stem}_classification.json"
+        classify_path.write_text(
+            json.dumps(classifications, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+
+        # from_json 모드 (기본): 비정형 시트만 Compact JSON → LLM → Markdown
         logger.info("🔄 [%s] Reconstructing to MD (provider=%s, model=%s)...", name, provider, model_id)
         try:
-            rc_md, usage = reconstruct_all_sheets(ast, "md", model_id, provider)
+            rc_md, usage = reconstruct_all_sheets(ast, "md", model_id, provider, skip_sheets=set(pass_sheets))
             rc_md_path = doc_output / f"{stem}_reconstructed.md"
             rc_md_path.write_text(rc_md, encoding="utf-8")
             token_usage["input_tokens"] += usage["input_tokens"]

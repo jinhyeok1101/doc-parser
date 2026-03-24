@@ -1,0 +1,5 @@
+{
+  "model": "gpt-oss-120b-classify-test",
+  "input_tokens": 66050,
+  "output_tokens": 42320
+}
