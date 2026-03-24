@@ -145,11 +145,15 @@ def call_llm_text(
         model_id: 모델 ID (예: "gemini-2.5-flash", "qwen/qwen3.5-plus-02-15")
         system: 시스템 프롬프트
         user: 유저 프롬프트
-        provider: "gemini" 또는 "openrouter"
+        provider: "gemini", "openrouter", "central"
 
     Returns:
         (text, usage_dict) — 응답 텍스트와 토큰 사용량
     """
+    # central provider는 모델 고정: gpt-oss-120b
+    if provider == "central":
+        model_id = "gpt-oss-120b"
+
     # provider별 호출 함수 매핑
     _provider_fns = {
         "gemini": _call_gemini_text,
