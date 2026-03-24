@@ -442,18 +442,21 @@ compact_json = ast.to_json_compact()
 
 ### Office (Excel/Word/PPT) 출력
 
-항상 4가지 파일이 모두 출력됩니다:
-
 ```
 output/{파일명}_{모델명}/
-├── {파일명}_ast.json          # ① AST raw JSON (워크플로우 3단계)
-├── {파일명}.md                # ② AST → 사람읽기용 Markdown (워크플로우 5단계)
-├── {파일명}_compact.json      # ③ Compact JSON — 재구성 직전 (워크플로우 5단계)
-├── {파일명}_reconstructed.md  # ④ Gemini 재구성 최종 MD (--reconstruct)
-├── {파일명}_token_usage.json  # ⑤ 모델별 토큰 사용량 (in/out)
-└── pictures/                  # 추출된 이미지
+├── {파일명}_ast.json            # ① AST raw JSON
+├── {파일명}.md                  # ② raw Markdown (정형 시트는 여기서 최종 확인)
+├── {파일명}_compact.json        # ③ Compact JSON (재구성 입력)
+├── {파일명}_gen.md              # ④ LLM 재구성 MD (--reconstruct, 비정형 시트만)
+├── {파일명}_classification.json # ⑤ 시트별 분류 결과 (pass/reconstruct)
+├── {파일명}_token_usage.json    # ⑥ 토큰 사용량 (in/out)
+└── pictures/                    # 추출된 이미지
     └── ...
 ```
+
+> **사용자 최종 output:**
+> - 정형 시트 → `{파일명}.md` (raw MD 그대로)
+> - 비정형 시트 → `{파일명}_gen.md` (LLM 재구성)
 
 ### PDF 출력
 
