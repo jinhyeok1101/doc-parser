@@ -121,6 +121,7 @@ def _call_central_text(model_id: str, system: str, user: str) -> tuple[str, dict
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ],
+        temperature=0,
     )
     usage = {"input_tokens": 0, "output_tokens": 0}
     if response.usage:
