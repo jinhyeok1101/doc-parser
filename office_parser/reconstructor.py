@@ -365,12 +365,16 @@ def reconstruct_all_sheets(
     """
     skip_sheets = skip_sheets or set()
 
-    # 시트별 compact JSON 생성
+    # 시트별 compact JSON + raw MD 생성
     sheet_jsons = []
+    sheet_raw_mds = {}  # pass 시트용 raw MD 저장
     for node in ast.content:
         if node.type == "sheet":
             sheet_json = ast._sheet_to_compact(node)
             sheet_jsons.append(sheet_json)
+            name = sheet_json.get("sheet_name", "Sheet")
+            if name in skip_sheets:
+                sheet_raw_mds[name] = ast._sheet_to_markdown(node)
 
     if not sheet_jsons:
         return ""
@@ -388,8 +392,8 @@ def reconstruct_all_sheets(
             name = sj.get("sheet_name", f"Sheet_{i}")
             # 정형 시트는 reconstruct skip — raw compact JSON을 간단 MD로 변환
             if name in skip_sheets:
-                logger.info("⏭️ Skipping pass sheet '%s'", name)
-                results[i] = f"## {name}\n\n*(정형 데이터 — reconstruct 생략)*"
+                logger.info("⏭️ Skipping pass sheet '%s' — using raw MD", name)
+                results[i] = sheet_raw_mds.get(name, f"## {name}")
                 continue
             f = executor.submit(reconstruct_sheet, sj, output_format, model_id, provider)
             futures[f] = (i, name)

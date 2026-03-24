@@ -38,7 +38,7 @@ def parse_single(
       1. {stem}_ast.json          — raw AST (워크플로우 3단계)
       2. {stem}.md                — AST → 사람읽기용 Markdown
       3. {stem}_compact.json      — Compact JSON, 재구성 직전 (워크플로우 5단계)
-      4. {stem}_reconstructed.md  — Gemini 재구성 최종 MD
+      4. {stem}_gen.md  — LLM 재구성 최종 MD (비정형) / raw MD (정형)
     """
     import sys
     logging.basicConfig(level=logging.INFO, format="%(message)s", stream=sys.stderr)
@@ -107,7 +107,7 @@ def parse_single(
         logger.info("🔄 [%s] Reconstructing to MD (provider=%s, model=%s)...", name, provider, model_id)
         try:
             rc_md, usage = reconstruct_all_sheets(ast, "md", model_id, provider, skip_sheets=set(pass_sheets))
-            rc_md_path = doc_output / f"{stem}_reconstructed.md"
+            rc_md_path = doc_output / f"{stem}_gen.md"
             rc_md_path.write_text(rc_md, encoding="utf-8")
             token_usage["input_tokens"] += usage["input_tokens"]
             token_usage["output_tokens"] += usage["output_tokens"]
@@ -121,7 +121,7 @@ def parse_single(
             logger.info("🔄 [%s] Reconstructing from MD (provider=%s, model=%s)...", name, provider, model_id)
             try:
                 rc_from_md, usage_md = reconstruct_all_sheets_from_md(ast, model_id, provider)
-                rc_from_md_path = doc_output / f"{stem}_reconstructed_from_md.md"
+                rc_from_md_path = doc_output / f"{stem}_gen_from_md.md"
                 rc_from_md_path.write_text(rc_from_md, encoding="utf-8")
                 token_usage["input_tokens"] += usage_md["input_tokens"]
                 token_usage["output_tokens"] += usage_md["output_tokens"]
