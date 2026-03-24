@@ -38,11 +38,14 @@ RAG(Retrieval-Augmented Generation) 파이프라인에서 가장 중요한 첫�
 - **다양한 출력**: JSON, Markdown, HTML, Text 형식 지원
 - **이미지/차트 추출**: 첨부 이미지 및 차트 데이터 자동 추출
 - **AI 요약**: Gemini로 이미지/슬라이드/시트 요약
+- **시트 분류**: LLM으로 시트별 pass(정형)/reconstruct(비정형) 자동 분류
+- **멀티 LLM**: Gemini, OpenRouter, Central LLM(사내 gpt-oss-120b) 지원
 
 ### 공통
 - **자동 분기**: 파일 확장자에 따라 PDF / Office 파서 자동 선택
 - **일괄 처리**: 폴더 내 문서를 `ProcessPoolExecutor`로 병렬 파싱
-- **Gemini 재구성**: Compact JSON → Gemini → Clean MD/HTML 변환 (Excel)
+- **LLM 재구성**: Compact JSON → LLM → Clean MD 변환 (Excel 비정형 시트)
+- **프롬프트 관리**: `prompts.yaml`에서 reconstruct/classify 프롬프트 관리
 - **로그 저장**: `log/` 디렉토리에 실행 시각별 `.log` 파일 자동 생성
 
 ---
@@ -64,11 +67,16 @@ doc-parser/
 │   ├── __init__.py
 │   ├── parser.py                 # OfficeParser (docx/pptx/xlsx/odt/rtf 파싱)
 │   ├── types.py                  # AST 타입 정의 + 출력 변환 (to_json_compact, to_markdown, to_html)
-│   ├── worker.py                 # 단일 파일 파싱 워커 + reconstruct 호출
-│   ├── reconstructor.py          # Gemini 기반 JSON→MD/HTML 재구성
-│   └── prompts.yaml              # reconstruct용 프롬프트 관리
+│   ├── worker.py                 # 단일 파일 파싱 워커 + 분류 + reconstruct 호출
+│   ├── reconstructor.py          # 시트 분류(pass/reconstruct) + LLM 기반 재구성
+│   ├── llm_client.py             # LLM Provider 추상화 (Gemini/OpenRouter/Central)
+│   └── prompts.yaml              # reconstruct/classify 프롬프트 관리
+├── scripts/                      # 유틸리티 스크립트
+│   ├── compare_reconstruct.py    # GT vs Target ROUGE/키워드/수치 자동 비교
+│   └── run_from_md.py            # from_md 전용 실행 스크립트
 ├── docs/                         # 문서
-│   └── test_docs/                # 테스트용 입력 문서 (xlsx, docx 등)
+│   ├── test_docs/                # 테스트용 입력 문서 (xlsx, docx 등)
+│   └── plans/                    # 스프린트 계획 + 보고서
 ├── pdf_parser_docling.ipynb      # PDF 인터랙티브 노트북
 ├── log/                          # 실행 로그 (gitignore)
 ├── output/                       # 파싱 출력 ({파일명}_{모델명}/ 구조)
@@ -140,10 +148,14 @@ flowchart TB
         HTML_OUT["to_html()<br/>→ 브라우저 뷰"]
     end
 
-    subgraph RECONSTRUCT["6. 재구성 (선택)"]
+    subgraph CLASSIFY["6-1. 시트 분류"]
+        CL["classify_all_sheets()<br/>시트별 pass/reconstruct 판단<br/>(LLM, 첫 10행만 전송)"]
+    end
+
+    subgraph RECONSTRUCT["6-2. 재구성 (비정형만)"]
         direction TB
-        RC["reconstructor.py<br/>Compact JSON(요약 포함) → Gemini<br/>→ Clean MD"]
-        POST["후처리<br/>_ensure_image_summaries_md()<br/>이미지 요약 확정 반영"]
+        RC["reconstructor.py<br/>Compact JSON → LLM → Clean MD<br/>(pass 시트는 skip)"]
+        POST["후처리<br/>이미지 요약 반영"]
         RC --> POST
     end
 
@@ -151,7 +163,7 @@ flowchart TB
     AST_LAYER --> SUMMARY
     SUMMARY -->|"요약이 AST에 반영"| OUTPUT
     AST_LAYER -->|"요약 없이"| OUTPUT
-    OUTPUT --> RECONSTRUCT
+    OUTPUT --> CLASSIFY --> RECONSTRUCT
 ```
 
 ### 각 단계 상세
@@ -270,13 +282,16 @@ Step 2: 이미지 요약 (병렬, Step 1 완료 후) → image.metadata["image_s
 
 #### 2-5. 재구성 (reconstructor.py)
 
-`--reconstruct` 플래그를 주면 Compact JSON을 Gemini에게 보내서 깔끔한 MD/HTML로 재생성합니다.
+`--reconstruct` 플래그를 주면 시트를 분류한 뒤, 비정형 시트만 LLM으로 재구성합니다.
 
 ```
-Compact JSON → Gemini 2.5 Flash (시트별 병렬) → 후처리 → Clean MD/HTML
+시트별 분류 (pass/reconstruct) → 비정형만 Compact JSON → LLM (시트별 병렬) → Clean MD
 ```
 
-**Gemini가 하는 일:**
+- **정형 시트** (pass): raw MD 그대로 `{stem}.md`에 출력
+- **비정형 시트** (reconstruct): LLM 재구성 결과를 `{stem}_gen.md`에 출력
+
+**LLM이 하는 일:**
 1. 한 시트의 여러 표를 의미 단위로 분리
 2. 간트 배경색 → 범례 참조하여 텍스트 상태 변환 (예: `#00B050` → "완료")
 3. 계층 구조를 들여쓰기/리스트로 표현
@@ -317,11 +332,19 @@ uv sync
 
 ## 환경 설정
 
-`.env` 파일에 Gemini API 키를 설정합니다:
+`.env` 파일에 API 키를 설정합니다:
 
 ```bash
+# Gemini (기본)
 GOOGLE_API_KEY=your_google_api_key
 MODEL_ID=gemini-2.5-flash  # 기본 모델 (선택)
+
+# OpenRouter (선택)
+OPENROUTER_API_KEY=your_openrouter_api_key
+
+# Central LLM — 사내 LiteLLM Proxy (선택)
+CENTRAL_LLM_API_KEY=your_central_llm_api_key
+CENTRAL_LLM_BASE_URL=https://your-litellm-proxy/endpoint
 ```
 
 ## 사용법
@@ -361,7 +384,9 @@ uv run python run.py sample.pdf -o output -v             # 상세 로그
 | `--to-html` | | Office 출력: HTML |
 | `--to-text` | | Office 출력: Text |
 | `--to-json` | | Office 출력: Compact JSON (RAG 최적화) |
-| `--reconstruct` | `false` | Gemini로 JSON→clean MD/HTML 재구성 |
+| `--reconstruct` | `false` | LLM으로 비정형 시트 재구성 (시트 분류 자동 실행) |
+| `--provider` | `gemini` | LLM provider (`gemini`, `openrouter`, `central`) |
+| `--compare` | `false` | from_json vs from_md 입력 포맷 비교 모드 |
 | `-v`, `--verbose` | `false` | DEBUG 로그 출력 |
 
 ### Python 코드에서 직접 사용
