@@ -145,6 +145,107 @@ def reconstruct_sheet(
     return result, usage
 
 
+def reconstruct_sheet_from_md(
+    sheet_name: str,
+    md_content: str,
+    model_id: str = "gemini-2.5-flash",
+    provider: str = "gemini",
+) -> tuple:
+    """단일 시트 Markdown을 LLM으로 재구성 (from_md 모드).
+
+    Args:
+        sheet_name: 시트 이름
+        md_content: AST에서 생성된 시트별 Markdown 텍스트
+        model_id: 모델 ID
+        provider: "gemini", "openrouter", "central"
+
+    Returns:
+        (text, usage) 튜플
+    """
+    prompts = _load_prompts()
+    prompt = prompts["reconstruct_md_from_md"]
+
+    system = prompt["system"]
+    user = prompt["user"].format(
+        sheet_name=sheet_name,
+        md_content=md_content,
+    )
+
+    result, usage = call_llm_text(model_id, system, user, provider=provider)
+
+    if not result:
+        return "", usage
+
+    # 코드 블록 래핑 제거
+    if result.startswith("```markdown"):
+        result = result[len("```markdown"):].strip()
+    if result.startswith("```"):
+        result = result[3:].strip()
+    if result.endswith("```"):
+        result = result[:-3].strip()
+
+    return result, usage
+
+
+def reconstruct_all_sheets_from_md(
+    ast,
+    model_id: str = "gemini-2.5-flash",
+    provider: str = "gemini",
+) -> tuple:
+    """AST의 모든 시트를 MD 입력으로 재구성하여 하나의 문서로 합침.
+
+    Args:
+        ast: OfficeParserAST 인스턴스
+        model_id: 모델 ID
+        provider: "gemini", "openrouter", "central"
+
+    Returns:
+        (전체 재구성 문서, total_usage) 튜플
+    """
+    # 시트별 Markdown 생성
+    sheet_mds = []
+    for node in ast.content:
+        if node.type == "sheet":
+            meta = node.metadata or {}
+            name = meta.get("sheetName", "Sheet")
+            md = ast._sheet_to_markdown(node)
+            sheet_mds.append((name, md))
+
+    if not sheet_mds:
+        return "", {"input_tokens": 0, "output_tokens": 0}
+
+    max_workers = 1 if provider == "openrouter" else None
+    logger.info("🔄 Reconstructing %d sheets from MD (%s, workers=%s)...",
+                len(sheet_mds), provider, max_workers or "auto")
+    results = {}
+    total_usage = {"input_tokens": 0, "output_tokens": 0}
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = {}
+        for i, (name, md) in enumerate(sheet_mds):
+            f = executor.submit(reconstruct_sheet_from_md, name, md, model_id, provider)
+            futures[f] = (i, name)
+
+        for f in as_completed(futures):
+            idx, name = futures[f]
+            try:
+                text, usage = f.result()
+                results[idx] = text
+                total_usage["input_tokens"] += usage["input_tokens"]
+                total_usage["output_tokens"] += usage["output_tokens"]
+                logger.info("✅ [from_md] Reconstructed '%s' (in: %d, out: %d tokens)",
+                            name, usage["input_tokens"], usage["output_tokens"])
+            except Exception as e:
+                logger.error("❌ [from_md] Reconstruct failed for '%s': %s", name, e)
+                results[idx] = f"<!-- Reconstruct failed: {name} -->"
+
+    logger.info("📊 [from_md] Total — input: %d, output: %d",
+                total_usage["input_tokens"], total_usage["output_tokens"])
+
+    ordered = [results[i] for i in sorted(results.keys())]
+    return "\n\n---\n\n".join(ordered), total_usage
+
+
 def reconstruct_all_sheets(
     ast,
     output_format: str,

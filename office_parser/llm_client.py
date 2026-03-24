@@ -115,6 +115,11 @@ def _call_central_text(model_id: str, system: str, user: str) -> tuple[str, dict
         (text, usage_dict) — 응답 텍스트와 토큰 사용량
     """
     client = _get_central()
+    # 입력 토큰에 따라 max_tokens 동적 설정 (컨텍스트 윈도우 32K 기준)
+    # 입력 추정: 시스템+유저 글자 수 / 2 (한글 기준)
+    estimated_input = (len(system) + len(user)) // 2
+    # 32K 윈도우에서 입력을 빼고 남은 공간을 출력에 할당 (여유 1K)
+    max_output = max(4096, 32768 - estimated_input - 1024)
     response = client.chat.completions.create(
         model=model_id,
         messages=[
@@ -122,6 +127,7 @@ def _call_central_text(model_id: str, system: str, user: str) -> tuple[str, dict
             {"role": "user", "content": user},
         ],
         temperature=0,
+        max_tokens=max_output,
     )
     usage = {"input_tokens": 0, "output_tokens": 0}
     if response.usage:

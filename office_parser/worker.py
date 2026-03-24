@@ -91,6 +91,7 @@ def parse_single(
         model_id = config.reconstruct_model or config.gemini_model_id
         provider = config.llm_provider
 
+        # from_json 모드 (기본): Compact JSON → LLM → Markdown
         logger.info("🔄 [%s] Reconstructing to MD (provider=%s, model=%s)...", name, provider, model_id)
         try:
             rc_md, usage = reconstruct_all_sheets(ast, "md", model_id, provider)
@@ -101,6 +102,20 @@ def parse_single(
             logger.info("✅ [%s] Reconstructed MD → %s", name, rc_md_path.name)
         except Exception as e:
             logger.error("❌ [%s] MD reconstruct failed: %s", name, e)
+
+        # from_md 모드 (compare_input_formats 활성화 시): AST Markdown → LLM → 정제 Markdown
+        if config.compare_input_formats:
+            from office_parser.reconstructor import reconstruct_all_sheets_from_md
+            logger.info("🔄 [%s] Reconstructing from MD (provider=%s, model=%s)...", name, provider, model_id)
+            try:
+                rc_from_md, usage_md = reconstruct_all_sheets_from_md(ast, model_id, provider)
+                rc_from_md_path = doc_output / f"{stem}_reconstructed_from_md.md"
+                rc_from_md_path.write_text(rc_from_md, encoding="utf-8")
+                token_usage["input_tokens"] += usage_md["input_tokens"]
+                token_usage["output_tokens"] += usage_md["output_tokens"]
+                logger.info("✅ [%s] Reconstructed from MD → %s", name, rc_from_md_path.name)
+            except Exception as e:
+                logger.error("❌ [%s] from_md reconstruct failed: %s", name, e)
 
     # 토큰 사용량 리포트 저장
     usage_path = doc_output / f"{stem}_token_usage.json"

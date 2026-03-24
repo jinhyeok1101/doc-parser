@@ -135,6 +135,7 @@ def parse_office(
     reconstruct: bool = False,
     verbose: bool = False,
     provider: str = "gemini",
+    compare: bool = False,
 ) -> Path:
     """Parse a single Office file."""
     _setup_logging(verbose)
@@ -147,6 +148,7 @@ def parse_office(
         reconstruct=reconstruct,
         reconstruct_model=model_id,
         llm_provider=provider,
+        compare_input_formats=compare,
     )
     # 모델명 단축: "qwen/qwen3-coder:free" → "qwen3-coder", "gemini-2.5-flash" → "gemini-2.5-flash"
     model_short = model_id.split("/")[-1].split(":")[0]
@@ -164,6 +166,7 @@ def parse_single(
     reconstruct: bool = False,
     verbose: bool = False,
     provider: str = "gemini",
+    compare: bool = False,
 ) -> Path:
     """Dispatch to PDF / Office parser based on file extension."""
     file_path = Path(file_path)
@@ -171,7 +174,7 @@ def parse_single(
     if ext in PDF_EXTENSIONS:
         return parse_pdf(file_path, output_dir, model_id, no_summary, table_mode, verbose)
     elif ext in OFFICE_EXTENSIONS:
-        return parse_office(file_path, output_dir, model_id, no_summary, output_format, reconstruct, verbose, provider)
+        return parse_office(file_path, output_dir, model_id, no_summary, output_format, reconstruct, verbose, provider, compare)
     else:
         raise ValueError(f"Unsupported file format: {ext}")
 
@@ -191,6 +194,7 @@ def main():
     parser.add_argument("--reconstruct", action="store_true", help="LLM으로 JSON→clean MD/HTML 재구성")
     parser.add_argument("--provider", choices=["gemini", "openrouter", "central"], default=DEFAULT_PROVIDER,
                         help="LLM provider (default: env LLM_PROVIDER or gemini)")
+    parser.add_argument("--compare", action="store_true", help="from_json vs from_md 입력 포맷 비교 모드")
     parser.add_argument("-v", "--verbose", action="store_true", help="Enable DEBUG logging")
     args = parser.parse_args()
 
@@ -205,7 +209,7 @@ def main():
         parse_single(
             args.input, args.output, args.model_id, args.no_summary,
             args.table_mode, output_format, args.reconstruct, args.verbose,
-            args.provider,
+            args.provider, args.compare,
         )
         return
 

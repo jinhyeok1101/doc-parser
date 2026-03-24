@@ -45,6 +45,7 @@ class OfficeParserConfig:
     reconstruct_model: str = "gemini-2.5-flash"  # reconstruct용 모델
     reconstruct_similarity_threshold: float = 0.7  # 파편 재결합 열 유사도 기준
     llm_provider: str = "gemini"  # LLM 제공자: "gemini", "openrouter", "central"
+    compare_input_formats: bool = False  # from_json vs from_md 비교 모드
 
 @dataclass
 class TextFormatting:
